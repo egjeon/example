@@ -1,0 +1,26 @@
+public class Test4 {
+        //["call", "respiration", "repeat", "check", "pressure"]	[2, 4, 5, 1, 3]
+        //["respiration", "repeat", "check", "pressure", "call"]	[4, 5, 1, 3, 2]
+        public static int[] solution(String[] cpr) {
+            int[] answer = {0, 0, 0, 0, 0};
+            String[] basic_order = {"check", "call", "pressure", "respiration", "repeat"};
+
+            for(int i=0; i< cpr.length; i++){
+                for(int j=0; j< basic_order.length; j++){
+                    if(cpr[i].equals(basic_order[j])){
+                        answer[i] = j+1;
+                        break;
+                    }
+                }
+            }
+            return answer;
+    }
+
+    public static void main(String[] args) {
+            String [] cpr = {"call", "respiration", "repeat", "check", "pressure"};
+        int [] result = solution(cpr);
+        for(int i=0; i< result.length; i++){
+            System.out.print(result[i] + " " );
+        }
+    }
+}
