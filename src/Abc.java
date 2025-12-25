@@ -3,5 +3,7 @@ public class Abc {
         System.out.println(" * ");
         System.out.println("***");
         System.out.println(" * ");
+        System.out.println(" *");
+        System.out.println(" *");
     }
 }

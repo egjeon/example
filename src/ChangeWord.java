@@ -17,4 +17,5 @@ public class ChangeWord {
         }
         System.out.println(result);
     }
+
 }
