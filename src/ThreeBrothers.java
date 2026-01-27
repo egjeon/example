@@ -3,48 +3,42 @@ import java.util.Arrays;
 public class ThreeBrothers {
     public static int solution(int[] number) {
         int answer = 0;
-        int [] arr = new int[3];
-        int k = 0;
-        //-2, 3, 0, 2, -5 length 5
-      /*      0 1 2
-            0 1 3
-            0 1 4
-
-            1 2 3
-            1 2 4
-
-            2 3 4*/
-
-        //-3, -2, -1, 0, 1, 2, 3  length 7
-        // 0 1 2
-        // 0 1 3
-        // 0 1 4
-        // 0 1 5
-        // 0 1 6
-
-        // 1 2 3
-        // 1 2 4
-        // 1 2 5
-        // 1 2 6
-
-        // 2 3 4
-        // 2 3 5
-        // 2 3 6
-
-        // 3 4 5
-        // 3 4 6
-
-        // 4 5 6
-
-
-        for(int i = 0; i < number.length-3; i++) {
-
+        for(int i =0; i <= number.length-3; i++){
+            for(int j = i+1; j <= number.length-2; j++){
+                for(int k = j+1; k <= number.length-1; k++){
+                    if(number[i]+number[j]+number[k]==0)
+                        answer++;
+                }
+            }
         }
-
         return answer;
+        /*i = 0;               (length - 2)-i
+        5
+        4
+        3
+        2
+        1
+        i = 1;
+
+        4
+        3
+        2
+        1
+        i = 2;
+        3
+        2
+        1
+
+        i = 3
+        2
+        1
+
+        i = 4
+        1
+*/
 
     }
     public static void main(String[] args) {
-        System.out.println(solution(new int[]{-3, -2, -1, 0, 1, 2, 3}));
+        System.out.println(solution(new int[]{-1, 1, -1, 1})); //5
     }
 }
