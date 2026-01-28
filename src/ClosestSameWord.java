@@ -1,33 +1,33 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class ClosestSameWord {
     public static int[] solution(String s) {
-        int[] answer = new int[s.length()];
-        String [] sArr = s.split("");
-        ArrayList<String> list = new ArrayList<>();
-        answer[0] = -1;
-        for(int i = 1; i < s.length(); i++) {
-            list.add(sArr[i-1]); //ban
-            int temp = -1;
-            int cnt = 0;
-            System.out.println();
-            for(int j = list.size()-1; j >= 0; j--) {
-                System.out.println("i값 : " + i);
-                System.out.println("j값 : " + i);
-                System.out.println("보자..: " +  list.get(j));
-                System.out.println("비교군 : " + sArr[i]);
-                cnt++;
-                if(sArr[i].equals(list.get(j))) {
-                    temp = cnt;
-                    System.out.println("걸렸을때 !!! temp값 : " + temp);
-                    break;
-                }
-            }
-            answer[i] = temp;
-        }
 
+        int[] answer = new int[s.length()];
+        String[] word = s.split("");
+        StringBuilder emptyStr = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (emptyStr.toString().contains(word[i])) {
+                answer[i] = i - emptyStr.lastIndexOf(word[i]);
+            } else {
+                answer[i] = -1;
+            }
+            emptyStr.append(word[i]);
+        }
         return answer;
+
+        /*int[] answer = new int[s.length()];
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        for(int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if(map.containsKey(c)) {
+                answer[i] = i-map.get(c);
+            }else{
+                answer[i] = -1;
+            }
+            map.put(c, i);
+        }
+        return answer;*/
     }
     public static void main(String[] args) {
         System.out.println(Arrays.toString(solution("banana")));
