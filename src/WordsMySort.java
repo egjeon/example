@@ -22,12 +22,12 @@ public class WordsMySort {
            }
         }*/
 
-        //방법2 //O(NLOGN)
+        //방법2 //O(N)
         ArrayList<String> words = new ArrayList<>();
         for (int i = 0; i < strings.length; i++) {
             words.add(strings[i].charAt(n) + strings[i]);
         }
-        Collections.sort(words);
+        Collections.sort(words); //(NLOGN)
 
         for (int i = 0; i < words.size(); i++) {
             System.out.println(words.get(i));
