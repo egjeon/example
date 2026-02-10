@@ -4,29 +4,21 @@ public class ConditionSequenceChange2 {
 
     public static int solution(int[] arr) {
         int answer = 0;
-        int idx = 0;
-        while(true){
-
-            if(arr[idx] >= 50){
-                if(arr[idx]%2==0){
-                    arr[idx] =  arr[idx]/2;
+            while (true) {
+                int[] prevArr = arr.clone();
+                for (int i = 0; i < arr.length; i++) {
+                    if (arr[i] >= 50 && arr[i] % 2 == 0) {
+                        arr[i] /= 2;
+                    } else if (arr[i] < 50 && arr[i] % 2 != 0) {
+                        arr[i] = arr[i] * 2 + 1;
+                    }
                 }
-            }else{
-                if(arr[idx]%2!=0){
-                    arr[idx] = arr[idx]*2+1;
-                }
-            }
-            int [] checkArr = arr.clone();
-            idx++;
-
-            if(idx > arr.length-1){
-                if(Arrays.equals(checkArr, arr)){
+                if (Arrays.equals(prevArr, arr)) {
                     break;
                 }
                 answer++;
-                idx = 0;
             }
-        }
+
               return answer;
     }
 
